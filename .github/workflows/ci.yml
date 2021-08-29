@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - 'v*'
+  pull_request: {}
+  schedule:
+    - cron: '0 3 * * *' # daily, at 3am
+
+jobs:
+  test:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn lint
+      - run: yarn build
+        working-directory: packages/dom-element-descriptors
+      - run: yarn test:coverage
+        working-directory: packages/dom-element-descriptors

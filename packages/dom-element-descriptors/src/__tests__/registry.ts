@@ -1,6 +1,6 @@
 import { describe, test, expect } from '@jest/globals';
 import { registerDescriptorData, lookupDescriptorData } from '..';
-import { IDOMElementDescriptor } from '..';
+import { IDOMElementDescriptor, isDescriptor } from '..';
 
 describe('registry', () => {
   test('register/lookup works', () => {
@@ -33,5 +33,19 @@ describe('registry', () => {
     registerDescriptorData(descriptor, data);
     registerDescriptorData(descriptor, null);
     expect(lookupDescriptorData(descriptor)).toEqual(null);
+  });
+
+  test('isDescriptor works', () => {
+    let descriptor: IDOMElementDescriptor = {};
+    let data = { elements: [] };
+
+    expect(isDescriptor({})).toEqual(false);
+    expect(isDescriptor(descriptor)).toEqual(false);
+
+    registerDescriptorData(descriptor, data);
+    expect(isDescriptor(descriptor)).toEqual(true);
+
+    registerDescriptorData(descriptor, null);
+    expect(isDescriptor(descriptor)).toEqual(false);
   });
 });

@@ -1,9 +1,12 @@
 import { describe, test, expect } from '@jest/globals';
-import { resolveDOMElement, resolveDOMElements } from '..';
-import type { DescriptorData } from '..';
-import { registerDescriptorData } from '../registry';
-import { IDOMElementDescriptor } from '../types';
-import { resolveDescription } from '../descriptor-access';
+import {
+  resolveDOMElement,
+  resolveDOMElements,
+  resolveDescription,
+  registerDescriptorData,
+  IDOMElementDescriptor,
+  DescriptorData,
+} from '..';
 
 describe('descriptor access', () => {
   function createElement(index: number): Element {

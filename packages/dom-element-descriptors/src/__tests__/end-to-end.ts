@@ -17,8 +17,8 @@ class QueryData {
     return document.querySelector(this.selector);
   }
 
-  get elements(): Element[] {
-    return Array.from(document.querySelectorAll(this.selector));
+  get elements(): Iterable<Element> {
+    return document.querySelectorAll(this.selector);
   }
 }
 

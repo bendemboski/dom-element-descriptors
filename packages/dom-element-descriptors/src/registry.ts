@@ -1,6 +1,23 @@
 import type { IDOMElementDescriptor, DescriptorData } from './types';
 
-const registry: WeakMap<IDOMElementDescriptor, DescriptorData> = new WeakMap();
+type Registry = WeakMap<IDOMElementDescriptor, DescriptorData>;
+
+/**
+ * Get the registry instance.
+ *
+ * We store it on the window to ensure that if some dependency/hoisting horkage
+ * results in the presence of multiple copies of this library, they are all
+ * using the same registry.
+ *
+ * @returns the registry
+ */
+function getRegistry(): Registry {
+  const win = window as { domElementDescriptorsRegistry?: Registry };
+
+  win.domElementDescriptorsRegistry =
+    win.domElementDescriptorsRegistry || new WeakMap();
+  return win.domElementDescriptorsRegistry;
+}
 
 /**
  * Register or explicitly unregister descriptor data.
@@ -17,9 +34,9 @@ export function registerDescriptorData(
   data: DescriptorData | null
 ): void {
   if (data) {
-    registry.set(descriptor, data);
+    getRegistry().set(descriptor, data);
   } else {
-    registry.delete(descriptor);
+    getRegistry().delete(descriptor);
   }
 }
 
@@ -37,7 +54,7 @@ export function isDescriptor(
  * @returns the descriptor's data, or null if none is set
  */
 export function isDescriptor(descriptor: MaybeDescriptor): boolean {
-  return registry.has(descriptor);
+  return getRegistry().has(descriptor);
 }
 
 /**
@@ -49,5 +66,5 @@ export function isDescriptor(descriptor: MaybeDescriptor): boolean {
 export function lookupDescriptorData(
   descriptor: IDOMElementDescriptor
 ): DescriptorData | null {
-  return registry.get(descriptor) || null;
+  return getRegistry().get(descriptor) || null;
 }

@@ -4,6 +4,7 @@ import {
   IDOMElementDescriptor,
   resolveDOMElement,
   resolveDOMElements,
+  IS_DESCRIPTOR,
 } from '..';
 
 class QueryData {
@@ -22,6 +23,8 @@ class SimplePageObject implements IDOMElementDescriptor {
   constructor(selector: string) {
     registerDescriptorData(this, new QueryData(selector));
   }
+
+  [IS_DESCRIPTOR] = true;
 }
 
 function exists(descriptor: IDOMElementDescriptor, count?: number): boolean {
@@ -33,7 +36,7 @@ function exists(descriptor: IDOMElementDescriptor, count?: number): boolean {
   if (count === undefined) {
     return Boolean(resolveDOMElement(data));
   } else {
-    return resolveDOMElements(data).length === count;
+    return Array.from(resolveDOMElements(data)).length === count;
   }
 }
 

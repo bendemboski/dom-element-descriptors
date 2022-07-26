@@ -6,6 +6,7 @@ import {
   registerDescriptorData,
   IDOMElementDescriptor,
   DescriptorData,
+  IS_DESCRIPTOR,
 } from '..';
 
 describe('descriptor access', () => {
@@ -99,7 +100,7 @@ describe('descriptor access', () => {
   });
 
   test('it resolves descriptions', () => {
-    let descriptor = {};
+    let descriptor = { [IS_DESCRIPTOR]: true };
     registerDescriptorData(descriptor, {
       elements: [],
       description: 'empty list',
@@ -109,7 +110,7 @@ describe('descriptor access', () => {
   });
 
   test('it resolves missing descriptions', () => {
-    let descriptor = {};
+    let descriptor = { [IS_DESCRIPTOR]: true };
     registerDescriptorData(descriptor, { elements: [] });
 
     expect(resolveDescription(descriptor)).toEqual(undefined);
@@ -123,7 +124,7 @@ describe('descriptor access', () => {
       elements: [element1, element2],
       description: 'some elements',
     };
-    let descriptor = {};
+    let descriptor = { [IS_DESCRIPTOR]: true };
     registerDescriptorData(descriptor, data);
 
     expect(resolveDOMElement(descriptor)).toEqual(element1);

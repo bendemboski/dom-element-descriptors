@@ -1,4 +1,4 @@
-import type { DescriptorData, IDOMElementDescriptor } from './types';
+import { DescriptorData, IDOMElementDescriptor, IS_DESCRIPTOR } from './types';
 import { registerDescriptorData } from './registry';
 
 /**
@@ -21,7 +21,9 @@ import { registerDescriptorData } from './registry';
  * assert.dom(descriptor).hasClass('selected');
  */
 export function createDescriptor(data: DescriptorData): IDOMElementDescriptor {
-  let descriptor: IDOMElementDescriptor = {};
+  let descriptor: IDOMElementDescriptor = {
+    [IS_DESCRIPTOR]: true,
+  };
   registerDescriptorData(descriptor, data);
   return descriptor;
 }

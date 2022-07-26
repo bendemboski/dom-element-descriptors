@@ -1,3 +1,5 @@
+export const IS_DESCRIPTOR = '__dom_element_descriptor_is_descriptor__';
+
 /**
  * A DOM element descriptor.
  *
@@ -6,10 +8,14 @@
  * theoretically be one (and can be implicitly cast to one), so this interface
  * exists so the typings can be clear about when arguments/return values are
  * treated as DOM element descriptors, and so implementations can indicate that
- * they are DOM element descriptors.
+ * they are DOM element descriptors. We need the `[IS_DESCRIPTOR]` property so
+ * everthing object isn't implicitly cast-able to `IDOMElementDescriptor`, which
+ * would severely undercut the value of our typings.
  */
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface IDOMElementDescriptor {}
+export interface IDOMElementDescriptor {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  readonly [IS_DESCRIPTOR]: any;
+}
 
 interface BaseData {
   description?: string;

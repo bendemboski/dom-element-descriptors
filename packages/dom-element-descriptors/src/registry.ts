@@ -40,23 +40,6 @@ export function registerDescriptorData(
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type MaybeDescriptor = object;
-
-export function isDescriptor(
-  descriptor: MaybeDescriptor
-): descriptor is IDOMElementDescriptor;
-
-/**
- * Look up registered descriptor data
- *
- * @param descriptor the descriptor
- * @returns the descriptor's data, or null if none is set
- */
-export function isDescriptor(descriptor: MaybeDescriptor): boolean {
-  return getRegistry().has(descriptor);
-}
-
 /**
  * Look up registered descriptor data
  *

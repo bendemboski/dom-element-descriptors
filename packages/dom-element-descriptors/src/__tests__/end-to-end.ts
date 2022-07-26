@@ -36,7 +36,7 @@ function exists(descriptor: IDOMElementDescriptor, count?: number): boolean {
   if (count === undefined) {
     return Boolean(resolveDOMElement(data));
   } else {
-    return resolveDOMElements(data).length === count;
+    return Array.from(resolveDOMElements(data)).length === count;
   }
 }
 

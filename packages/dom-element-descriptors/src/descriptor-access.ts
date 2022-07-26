@@ -41,18 +41,17 @@ export function resolveDOMElement(
 }
 
 /**
- * Given a descriptor or descriptor data, get the list of elements it would
- * match.
+ * Given a descriptor or descriptor data, get the elements it would match.
  *
  * This is analogous to `querySelectorAll()`, and is meant to be used by DOM
  * helper libraries to resolve the targets of multi-element operations.
  *
  * @param target the descriptor or descriptor data
- * @returns the list of resolved DOM elements (possibly empty)
+ * @returns the resolved DOM elements (possibly none)
  */
 export function resolveDOMElements(
   target: IDOMElementDescriptor | DescriptorData
-): Element[] {
+): Iterable<Element> {
   let data = isDescriptor(target) ? lookupDescriptorData(target) : target;
   if (!data) {
     return [];

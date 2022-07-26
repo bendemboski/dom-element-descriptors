@@ -1,4 +1,20 @@
 
+
+## v0.3.0 (2022-07-26)
+
+#### :boom: Breaking Change
+* `dom-element-descriptors`
+  * [#35](https://github.com/bendemboski/dom-element-descriptors/pull/35) Update api ([@bendemboski](https://github.com/bendemboski))
+
+#### :house: Internal
+* `dom-element-descriptors`
+  * [#34](https://github.com/bendemboski/dom-element-descriptors/pull/34) Update dependencies ([@bendemboski](https://github.com/bendemboski))
+* Other
+  * [#4](https://github.com/bendemboski/dom-element-descriptors/pull/4) Create dependabot.yml ([@bendemboski](https://github.com/bendemboski))
+
+#### Committers: 1
+- Ben Demboski ([@bendemboski](https://github.com/bendemboski))
+
 ## v0.2.0 (2021-09-05)
 
 #### :bug: Bug Fix

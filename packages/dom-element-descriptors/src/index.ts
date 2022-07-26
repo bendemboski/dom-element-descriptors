@@ -1,12 +1,10 @@
+export { IS_DESCRIPTOR } from './types';
+
 // types
 export type { IDOMElementDescriptor, DescriptorData } from './types';
 
 // core registration/lookup methods
-export {
-  registerDescriptorData,
-  lookupDescriptorData,
-  isDescriptor,
-} from './registry';
+export { registerDescriptorData, lookupDescriptorData } from './registry';
 
 // helpers for resolving element(s) from descriptor data
 export {

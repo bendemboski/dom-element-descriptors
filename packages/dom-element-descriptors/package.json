@@ -26,7 +26,6 @@
   ],
   "scripts": {
     "build": "rollup -c ./rollup.config.mjs",
-    "changelog": "lerna-changelog",
     "lint": "concurrently 'npm:lint:*(!fix)' --names 'lint:'",
     "lint:fix": "concurrently 'npm:lint:*:fix' --names 'fix:'",
     "lint:package": "publint",
@@ -39,6 +38,7 @@
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.13.1",
+    "@release-it-plugins/lerna-changelog": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "@vitest/coverage-v8": "^0.34.6",
@@ -52,8 +52,7 @@
     "jsdom": "^22.1.0",
     "prettier": "^3.1.0",
     "publint": "^0.2.5",
-    "release-it": "^17.0.0",
-    "release-it-lerna-changelog": "^5.0.0",
+    "release-it": "^16.0.0",
     "rollup": "^4.5.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-typescript2": "^0.36.0",

@@ -1,5 +1,22 @@
 
 
+
+## v0.4.0 (2023-11-18)
+
+#### :boom: Breaking Change
+* `dom-element-descriptors`
+  * [#70](https://github.com/bendemboski/dom-element-descriptors/pull/70) Modernize tooling ([@bendemboski](https://github.com/bendemboski))
+
+#### :house: Internal
+* `dom-element-descriptors`
+  * [#72](https://github.com/bendemboski/dom-element-descriptors/pull/72) Fix releasing ([@bendemboski](https://github.com/bendemboski))
+  * [#70](https://github.com/bendemboski/dom-element-descriptors/pull/70) Modernize tooling ([@bendemboski](https://github.com/bendemboski))
+* Other
+  * [#71](https://github.com/bendemboski/dom-element-descriptors/pull/71) Use renovate ([@bendemboski](https://github.com/bendemboski))
+
+#### Committers: 1
+- Ben Demboski ([@bendemboski](https://github.com/bendemboski))
+
 ## v0.3.0 (2022-07-26)
 
 #### :boom: Breaking Change

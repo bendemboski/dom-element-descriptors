@@ -1,0 +1,12 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["github>mainmatter/renovate-config:ember-addon.json5"],
+  "regexManagers": [
+    {
+      "fileMatch": ["^.github/workflows/[^\\.]+\\.ya?ml$"],
+      "matchStrings": ["PNPM_VERSION:\\s*(?<currentValue>.*?)\n"],
+      "depNameTemplate": "pnpm",
+      "datasourceTemplate": "npm"
+    }
+  ]
+}

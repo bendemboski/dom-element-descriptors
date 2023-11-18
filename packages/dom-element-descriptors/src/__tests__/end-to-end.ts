@@ -1,7 +1,7 @@
 import {
   registerDescriptorData,
   lookupDescriptorData,
-  IDOMElementDescriptor,
+  type IDOMElementDescriptor,
   resolveDOMElement,
   resolveDOMElements,
   IS_DESCRIPTOR,

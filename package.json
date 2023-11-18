@@ -7,7 +7,7 @@
     "release": "cd packages/dom-element-descriptors && pnpm run release",
     "lint": "pnpm --filter '*' lint",
     "lint:fix": "pnpm --filter '*' lint:fix",
-    "test:coverage": "pnpm --filter '*' test:coverage"
+    "test": "pnpm --filter '*' test"
   },
   "engines": {
     "node": ">= 18.*",

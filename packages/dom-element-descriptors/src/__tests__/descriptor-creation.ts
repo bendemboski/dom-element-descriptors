@@ -1,6 +1,8 @@
 import { describe, test, expect } from '@jest/globals';
-import { createDescriptor } from '..';
-import { lookupDescriptorData } from '..';
+import {
+  createDescriptor,
+  lookupDescriptorData,
+} from '../dom-element-descriptors';
 
 describe('descriptor creation', () => {
   test('it works', () => {

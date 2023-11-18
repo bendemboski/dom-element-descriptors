@@ -5,7 +5,7 @@ import {
   resolveDOMElement,
   resolveDOMElements,
   IS_DESCRIPTOR,
-} from '..';
+} from '../dom-element-descriptors';
 
 class QueryData {
   constructor(private selector: string) {}

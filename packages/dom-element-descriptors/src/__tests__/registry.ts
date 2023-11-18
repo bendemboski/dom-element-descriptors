@@ -1,6 +1,10 @@
 import { describe, test, expect } from '@jest/globals';
-import { registerDescriptorData, lookupDescriptorData } from '..';
-import { IDOMElementDescriptor, IS_DESCRIPTOR } from '..';
+import {
+  registerDescriptorData,
+  lookupDescriptorData,
+  IDOMElementDescriptor,
+  IS_DESCRIPTOR,
+} from '../dom-element-descriptors';
 
 describe('registry', () => {
   test('register/lookup works', () => {

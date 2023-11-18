@@ -7,7 +7,7 @@ import {
   IDOMElementDescriptor,
   DescriptorData,
   IS_DESCRIPTOR,
-} from '..';
+} from '../dom-element-descriptors';
 
 describe('descriptor access', () => {
   function createElement(index: number): Element {

@@ -1,8 +1,9 @@
-# Release Process
+# Release
 
 Releases are mostly automated using
 [release-it](https://github.com/release-it/release-it/) and
 [lerna-changelog](https://github.com/lerna/lerna-changelog/).
+
 
 ## Preparation
 
@@ -24,39 +25,32 @@ When reviewing merged PR's the labels to be used are:
 * internal - Used for internal changes that still require a mention in the
   changelog/release notes.
 
+
 ## Release
 
 Once the prep work is completed, the actual release is straight forward:
 
-* First, ensure that you have installed your projects dependencies:
+* First, ensure that you have an environment variable with your GitHub token
+  setup as `GITHUB_AUTH`. This token will be used for generating your changelog
+  (unauthenticated requests to the GitHub API are heavily throttled) and for
+  creating the GitHub release. Only "repo" access is needed; no "admin"
+  or other scopes are required.
 
-```sh
-yarn
+* Next, ensure that you have installed your projects dependencies:
+
+```
+pnpm install
 ```
 
-* Second, ensure that you have obtained a
-  [GitHub personal access token][generate-token] with the `repo` scope (no
-  other permissions are needed). Make sure the token is available as the
-  `GITHUB_AUTH` environment variable.
+* And last (but not least 😁) do your release:
 
-  For instance:
-
-  ```bash
-  export GITHUB_AUTH=abc123def456
-  ```
-
-  You can also use a `.env` file (see [dotenv](https://github.com/motdotla/dotenv))
-
-[generate-token]: https://github.com/settings/tokens/new?scopes=repo&description=GITHUB_AUTH+env+variable
-
-* And last (but not least 😁) do your release.
-
-```sh
-yarn release
+```
+pnpm release
 ```
 
 [release-it](https://github.com/release-it/release-it/) manages the actual
-release process. It will prompt you to to choose the version number after which
+release process. It will prompt you to choose the version number after which
 you will have the chance to hand tweak the changelog to be used (for the
 `CHANGELOG.md` and GitHub release), then `release-it` continues on to tagging,
-pushing the tag and commits, etc.
+pushing the tag and commits, etc. Finally GitHub Actions will build the commit
+and push the release to npm.

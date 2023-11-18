@@ -35,4 +35,4 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - run: npm publish
-        working-directory: packages/qunit-dom
+        working-directory: packages/dom-element-descriptors

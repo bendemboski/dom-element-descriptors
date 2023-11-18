@@ -1,9 +1,31 @@
 import typescript from 'rollup-plugin-typescript2';
+import copy from 'rollup-plugin-copy';
+
+const typescriptConfiguration = {
+  exclude: [
+    'node_modules/**',
+    'src/**/__tests__/**',
+  ],
+};
+
+const copyStaticArtifacts = copy({
+  targets: [
+    { src: '../../README.md', dest: '.' },
+    { src: '../../LICENSE', dest: '.' },
+  ],
+});
 
 const iifeBundle = {
-  input: 'src/index.ts',
+  input: 'src/dom-element-descriptors.ts',
 
-  plugins: [typescript()],
+  plugins: [typescript({
+    ...typescriptConfiguration,
+    tsconfigOverride: {
+      compilerOptions: {
+        declaration: false,
+      }
+    }
+  }), copyStaticArtifacts],
 
   output: {
     name: 'DOMElementDescriptors',
@@ -14,12 +36,12 @@ const iifeBundle = {
 };
 
 const esBundle = {
-  input: 'src/index.ts',
+  input: 'src/dom-element-descriptors.ts',
 
-  plugins: [typescript()],
+  plugins: [typescript(typescriptConfiguration)],
 
   output: {
-    file: 'dist/index.mjs',
+    file: 'dist/es/index.js',
     format: 'es',
     sourcemap: true,
   },

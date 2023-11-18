@@ -1,11 +1,12 @@
+import { describe, test, expect } from 'vitest';
 import {
   registerDescriptorData,
   lookupDescriptorData,
-  IDOMElementDescriptor,
+  type IDOMElementDescriptor,
   resolveDOMElement,
   resolveDOMElements,
   IS_DESCRIPTOR,
-} from '..';
+} from '../dom-element-descriptors';
 
 class QueryData {
   constructor(private selector: string) {}

@@ -31,7 +31,7 @@ function getRegistry(): Registry {
  */
 export function registerDescriptorData(
   descriptor: IDOMElementDescriptor,
-  data: DescriptorData | null
+  data: DescriptorData | null,
 ): void {
   if (data) {
     getRegistry().set(descriptor, data);
@@ -47,7 +47,7 @@ export function registerDescriptorData(
  * @returns the descriptor's data, or null if none is set
  */
 export function lookupDescriptorData(
-  descriptor: IDOMElementDescriptor
+  descriptor: IDOMElementDescriptor,
 ): DescriptorData | null {
   return getRegistry().get(descriptor) || null;
 }

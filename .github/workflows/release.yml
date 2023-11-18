@@ -1,22 +1,17 @@
-name: CI
+name: Release
 
 on:
   push:
-    branches:
-      - main
+    tags:
       - 'v*'
-  pull_request: {}
-  schedule:
-    - cron: '0 3 * * *' # daily, at 3am
 
 env:
   VOLTA_FEATURE_PNPM: 1
 
 jobs:
-  test:
-    name: Tests
+  release:
+    name: release
     runs-on: ubuntu-latest
-    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
@@ -27,8 +22,17 @@ jobs:
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
-
       - run: pnpm install
       - run: pnpm build
-      - run: pnpm lint
-      - run: pnpm test
+
+      - name: auto-dist-tag
+        run: pnpm dlx auto-dist-tag@1 --write
+        working-directory: packages/qunit-dom
+
+      - name: Set publishing config
+        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - run: npm publish
+        working-directory: packages/qunit-dom

@@ -1,13 +1,13 @@
-import { describe, test, expect } from '@jest/globals';
+import { describe, test, expect } from 'vitest';
 import {
   resolveDOMElement,
   resolveDOMElements,
   resolveDescription,
   registerDescriptorData,
-  IDOMElementDescriptor,
-  DescriptorData,
+  type IDOMElementDescriptor,
+  type DescriptorData,
   IS_DESCRIPTOR,
-} from '..';
+} from '../dom-element-descriptors';
 
 describe('descriptor access', () => {
   function createElement(index: number): Element {
@@ -15,27 +15,27 @@ describe('descriptor access', () => {
   }
 
   test('null element, no elements', () => {
-    let data = { element: null };
+    let data: DescriptorData = { element: null };
     expect(resolveDOMElement(data)).toEqual(null);
     expect(resolveDOMElements(data)).toEqual([]);
   });
 
   test('null element, empty elements', () => {
-    let data = { element: null, elements: [] };
+    let data: DescriptorData = { element: null, elements: [] };
     expect(resolveDOMElement(data)).toEqual(null);
     expect(resolveDOMElements(data)).toEqual([]);
   });
 
   test('element, no elements', () => {
     let element = createElement(1);
-    let data = { element };
+    let data: DescriptorData = { element };
     expect(resolveDOMElement(data)).toEqual(element);
     expect(resolveDOMElements(data)).toEqual([element]);
   });
 
   test('element, singleton elements', () => {
     let element = createElement(1);
-    let data = { element, elements: [element] };
+    let data: DescriptorData = { element, elements: [element] };
     expect(resolveDOMElement(data)).toEqual(element);
     expect(resolveDOMElements(data)).toEqual([element]);
   });
@@ -43,20 +43,23 @@ describe('descriptor access', () => {
   test('element, multiple elements', () => {
     let element1 = createElement(1);
     let element2 = createElement(2);
-    let data = { element1, elements: [element1, element2] };
+    let data: DescriptorData = {
+      element: element1,
+      elements: [element1, element2],
+    };
     expect(resolveDOMElement(data)).toEqual(element1);
     expect(resolveDOMElements(data)).toEqual([element1, element2]);
   });
 
   test('no element, empty elements', () => {
-    let data = { elements: [] };
+    let data: DescriptorData = { elements: [] };
     expect(resolveDOMElement(data)).toEqual(null);
     expect(resolveDOMElements(data)).toEqual([]);
   });
 
   test('no element, singleton elements', () => {
     let element = createElement(1);
-    let data = { elements: [element] };
+    let data: DescriptorData = { elements: [element] };
     expect(resolveDOMElement(data)).toEqual(element);
     expect(resolveDOMElements(data)).toEqual([element]);
   });
@@ -64,7 +67,7 @@ describe('descriptor access', () => {
   test('no element, multiple elements', () => {
     let element1 = createElement(1);
     let element2 = createElement(2);
-    let data = { elements: [element1, element2] };
+    let data: DescriptorData = { elements: [element1, element2] };
     expect(resolveDOMElement(data)).toEqual(element1);
     expect(resolveDOMElements(data)).toEqual([element1, element2]);
   });
@@ -137,13 +140,13 @@ describe('descriptor access', () => {
 
   test('it handles being passed null', () => {
     expect(resolveDOMElement(null as unknown as IDOMElementDescriptor)).toEqual(
-      null
+      null,
     );
     expect(
-      resolveDOMElements(null as unknown as IDOMElementDescriptor)
+      resolveDOMElements(null as unknown as IDOMElementDescriptor),
     ).toEqual([]);
     expect(
-      resolveDescription(null as unknown as IDOMElementDescriptor)
+      resolveDescription(null as unknown as IDOMElementDescriptor),
     ).toEqual(undefined);
   });
 });

@@ -1,4 +1,8 @@
-import { DescriptorData, IDOMElementDescriptor, IS_DESCRIPTOR } from './types';
+import {
+  type DescriptorData,
+  type IDOMElementDescriptor,
+  IS_DESCRIPTOR,
+} from './types';
 import { registerDescriptorData } from './registry';
 
 /**

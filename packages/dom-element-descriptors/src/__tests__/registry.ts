@@ -1,13 +1,18 @@
-import { describe, test, expect } from '@jest/globals';
-import { registerDescriptorData, lookupDescriptorData } from '..';
-import { IDOMElementDescriptor, IS_DESCRIPTOR } from '..';
+import { describe, test, expect } from 'vitest';
+import {
+  registerDescriptorData,
+  lookupDescriptorData,
+  type IDOMElementDescriptor,
+  IS_DESCRIPTOR,
+  type DescriptorData,
+} from '../dom-element-descriptors';
 
 describe('registry', () => {
   test('register/lookup works', () => {
     let descriptor: IDOMElementDescriptor = {
       [IS_DESCRIPTOR]: true,
     };
-    let data = { elements: [] };
+    let data: DescriptorData = { elements: [] };
 
     registerDescriptorData(descriptor, data);
     expect(lookupDescriptorData(descriptor)).toStrictEqual(data);
@@ -24,8 +29,8 @@ describe('registry', () => {
     let descriptor: IDOMElementDescriptor = {
       [IS_DESCRIPTOR]: true,
     };
-    let data1 = { elements: [] };
-    let data2 = { elements: [] };
+    let data1: DescriptorData = { elements: [] };
+    let data2: DescriptorData = { elements: [] };
 
     registerDescriptorData(descriptor, data1);
     registerDescriptorData(descriptor, data2);
@@ -36,7 +41,7 @@ describe('registry', () => {
     let descriptor: IDOMElementDescriptor = {
       [IS_DESCRIPTOR]: true,
     };
-    let data = { elements: [] };
+    let data: DescriptorData = { elements: [] };
 
     registerDescriptorData(descriptor, data);
     registerDescriptorData(descriptor, null);

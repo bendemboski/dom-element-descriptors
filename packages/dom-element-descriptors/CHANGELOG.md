@@ -3,6 +3,16 @@
 
 
 
+
+## v0.5.0 (2023-11-19)
+
+#### :rocket: Enhancement
+* `dom-element-descriptors`
+  * [#75](https://github.com/bendemboski/dom-element-descriptors/pull/75) Implement isDescriptor type predicate ([@bendemboski](https://github.com/bendemboski))
+
+#### Committers: 1
+- Ben Demboski ([@bendemboski](https://github.com/bendemboski))
+
 ## v0.4.2 (2023-11-18)
 
 #### :house: Internal

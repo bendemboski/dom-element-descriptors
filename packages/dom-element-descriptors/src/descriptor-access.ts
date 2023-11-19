@@ -1,20 +1,6 @@
+import { isDescriptor } from './is-descriptor';
 import { lookupDescriptorData } from './registry';
-import {
-  type DescriptorData,
-  type IDOMElementDescriptor,
-  IS_DESCRIPTOR,
-} from './types';
-
-function isDescriptor(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  maybeDescriptor: any,
-): maybeDescriptor is IDOMElementDescriptor {
-  try {
-    return IS_DESCRIPTOR in maybeDescriptor;
-  } catch (e) {
-    return false;
-  }
-}
+import { type DescriptorData, type IDOMElementDescriptor } from './types';
 
 /**
  * Given a descriptor or descriptor data, get the single/first element it would

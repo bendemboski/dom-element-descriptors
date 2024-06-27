@@ -1,4 +1,4 @@
-import { IS_DESCRIPTOR, type IDOMElementDescriptor } from './types';
+import { IS_DESCRIPTOR, type IDOMElementDescriptor } from './types.js';
 
 /**
  * Determine if the argument is an {@link IDOMElementDescriptor}.

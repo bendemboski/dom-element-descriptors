@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    // Settings needed for test
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+
+    /////////////////////////
+    // Settings to help us type check effectively.
+    // Unrelated to the above.
+
+    // Don't implicitly pull in declarations from `@types` packages unless we
+    // actually import from them AND the package in question doesn't bring its
+    // own types. 
+    "types": []
+  }
+}

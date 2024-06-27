@@ -4,6 +4,16 @@
 
 
 
+
+## v0.5.1 (2024-06-27)
+
+#### :bug: Bug Fix
+* `dom-element-descriptors`, `test-types-resolution-node`, `test-types-resolution-node16`, `test-types`
+  * [#76](https://github.com/bendemboski/dom-element-descriptors/pull/76) Test & fix modern module resolution ([@bendemboski](https://github.com/bendemboski))
+
+#### Committers: 1
+- Ben Demboski ([@bendemboski](https://github.com/bendemboski))
+
 ## v0.5.0 (2023-11-19)
 
 #### :rocket: Enhancement

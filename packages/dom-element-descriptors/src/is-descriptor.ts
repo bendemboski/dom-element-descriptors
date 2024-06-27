@@ -1,4 +1,4 @@
-import { IS_DESCRIPTOR, type IDOMElementDescriptor } from './types';
+import { IS_DESCRIPTOR, type IDOMElementDescriptor } from './types.js';
 
 /**
  * Determine if the argument is an {@link IDOMElementDescriptor}.
@@ -7,5 +7,7 @@ import { IS_DESCRIPTOR, type IDOMElementDescriptor } from './types';
  * {@link IDOMElementDescriptor}.
  */
 export function isDescriptor(target: unknown): target is IDOMElementDescriptor {
-  return typeof target === 'object' && target && IS_DESCRIPTOR in target;
+  return Boolean(
+    typeof target === 'object' && target && IS_DESCRIPTOR in target,
+  );
 }

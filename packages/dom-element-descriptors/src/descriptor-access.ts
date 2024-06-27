@@ -1,6 +1,6 @@
-import { isDescriptor } from './is-descriptor';
-import { lookupDescriptorData } from './registry';
-import { type DescriptorData, type IDOMElementDescriptor } from './types';
+import { isDescriptor } from './is-descriptor.js';
+import { lookupDescriptorData } from './registry.js';
+import type { DescriptorData, IDOMElementDescriptor } from './types.js';
 
 /**
  * Given a descriptor or descriptor data, get the single/first element it would

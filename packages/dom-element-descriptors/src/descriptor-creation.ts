@@ -2,8 +2,8 @@ import {
   type DescriptorData,
   type IDOMElementDescriptor,
   IS_DESCRIPTOR,
-} from './types';
-import { registerDescriptorData } from './registry';
+} from './types.js';
+import { registerDescriptorData } from './registry.js';
 
 /**
  * Create a descriptor from descriptor data

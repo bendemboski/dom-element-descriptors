@@ -1,4 +1,4 @@
-import type { IDOMElementDescriptor, DescriptorData } from './types';
+import type { IDOMElementDescriptor, DescriptorData } from './types.js';
 
 type Registry = WeakMap<IDOMElementDescriptor, DescriptorData>;
 
